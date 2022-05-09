@@ -4,7 +4,7 @@ import {
     Card, CardImg, CardImgOverlay,
     CardText, CardBody, CardTitle
 } from 'reactstrap';
-
+import '../App.css';
 class Menu extends Component {
 
     constructor(props) {
@@ -22,10 +22,10 @@ class Menu extends Component {
     renderDish(dish) {
         if (dish != null)
             return (
-                <Card>
+                <Card >
                     <CardImg width="100%" src={dish.image} alt={dish.name} />
                     <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
+                        <CardTitle className="bold-text">{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
                     </CardBody>
                 </Card>
@@ -37,6 +37,7 @@ class Menu extends Component {
     }
 
     render() {
+
         const menu = this.props.dishes.map((dish) => {
             return (
                 <div className="col-12 col-md-5 m-1">
@@ -44,14 +45,12 @@ class Menu extends Component {
                         onClick={() => this.onDishSelect(dish)}>
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
-                            <CardTitle>{dish.name}</CardTitle>
+                            <CardTitle >{dish.name}</CardTitle>
                         </CardImgOverlay>
                     </Card>
                 </div>
             );
         });
-
-    
 
         return (
             <div className="container">
