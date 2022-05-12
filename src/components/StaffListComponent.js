@@ -18,10 +18,10 @@ class StaffList extends Component {
     render() {
         const staffs = this.props.mystaff.map((staff) => {
             return (
-                <div className="col-12 col-sm-3 m-4">
+                <div className="col-12 col-md-6 col-lg-4 mt-2 ">
                     <Button variant="light" key={staff.id}
                         onClick={() => this.onStaffList(staff)}>
-                       {staff.name}
+                        {staff.name}
                     </Button>
 
                 </div>
@@ -29,17 +29,20 @@ class StaffList extends Component {
         });
 
         return (
+
             <div className="container">
                 <div className="row">
                     {staffs}
                     <p>Bấm vào tên nhân sự để xem thông tin</p>
                 </div>
+                
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
                         <DetailStaffComponent staff={this.state.staffList}></DetailStaffComponent>
                     </div>
                 </div>
             </div>
+
         );
     }
 }

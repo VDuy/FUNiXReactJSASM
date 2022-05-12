@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import dateFormat from 'dateformat';
-import { Card, CardText } from "reactstrap";
+import { Card, CardImg, CardText } from "reactstrap";
 import '../App.css';
 class DetailStaffComponent extends Component {
 
@@ -10,6 +10,7 @@ class DetailStaffComponent extends Component {
                 <div>
                     <Card className="staff-detail">
                         <h5>Họ và tên: {staff.name}</h5>
+                        <CardImg width="100%" src={staff.image}></CardImg>
                         <CardText>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardText>
                         <CardText>Phòng ban: {staff.department.name}</CardText>
                         <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
