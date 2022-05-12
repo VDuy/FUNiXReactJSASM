@@ -1,11 +1,12 @@
-
+import React from 'react';
 import './App.css';
-
+import StaffView from './view/StaffView';
 function App() {
   return (
-    <div className="App">
-      <h1>react app</h1>
+    <div>
+      <StaffView></StaffView>
     </div>
+
   );
 }
 
