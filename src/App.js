@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-
 import MenuView from './view/MenuView';
 
 function App() {
