@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import MenuView from './view/MenuView';
+import MainComponent from './components/MainComponent';
 
 function App() {
   return (
     <div >
-      
-      <MenuView />
+
+      <MainComponent />
     </div>
   );
 }
