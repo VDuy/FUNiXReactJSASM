@@ -1,3 +1,3 @@
 link repository: https://github.com/VDuy/FUNiXReactJSASM
  
-branch: RJS101x_Assignment1_duyvdfx15553%40funix.edu.vn
+branch: RJS101x_Assignment1_duyvdfx15553@funix.edu.vn
