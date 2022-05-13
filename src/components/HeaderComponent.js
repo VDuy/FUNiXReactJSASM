@@ -1,15 +1,25 @@
-import React, { Component } from "react"
-import { Navbar, NavbarBrand } from "reactstrap"
-
+import React, { Component } from "react";
+import { Navbar, NavbarBrand, Nav, NavbarToggler, NavItem, Collapse } from "reactstrap";
+import { NavLink } from 'react-router-dom';
 // import Jumbotron from 'reactstrap';
 
 class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar dark>
+                <Navbar dark expand="md">
                     <div className="container">
-                        <NavbarBrand href="/">Funix React App Lab</NavbarBrand>
+                        <NavbarBrand className="mr-auto" href="/">
+                            <img src="assets/images/logo.png" height="30" width="41"
+                            alt="Risto Con Fu"/>
+                            </NavbarBrand>
+                            <Nav navbar>
+                                <NavItem>
+                                    <NavLink className="nav-link" to="/home">
+
+                                    </NavLink>
+                                </NavItem>
+                            </Nav>
                     </div>
                 </Navbar>
                 {/* <Jumbotron>
