@@ -1,7 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
-// class DishDetail extends Component {
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, Breadcrumb, BreadcrumbItem
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 function RenderDish({ dish }) {
     return (
         <div className="col-12 col-md-5 m-1">
@@ -43,8 +47,18 @@ const DishDetail = (props) => {
         return (
             <div className="container">
                 <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>Menu</h3>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
                     <RenderDish dish={props.dish} />
-                    <RenderComment comments={props.dish.comments} />
+                    <RenderComment comments={props.comments} />
                 </div>
             </div>
         );
