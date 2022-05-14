@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import MenuView from './view/MenuView';
-
+import MainComponent from './components/MainComponent';
+import { BrowserRouter } from 'react-router-dom';
 function App() {
   return (
-    <div >
-      
-      <MenuView />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <MainComponent />
+      </div>
+    </BrowserRouter>
   );
 }
 
