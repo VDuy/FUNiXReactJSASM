@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import dateFormat from 'dateformat';
-import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+
+import { Card, CardImg, CardTitle } from "reactstrap";
 import '../App.css';
 class StaffList extends Component {
     constructor(props) {
@@ -18,30 +18,8 @@ class StaffList extends Component {
     onColumnSelect(col) {
         this.setState({ columnDefault: col });
     }
-    
-    renderDetail(staff) {
-        if (staff != null) {
-            return (
-                <div className="col-12">
-                    <Card className="staff-detail">
-                        <CardImg width="100%" src={staff.image} alt={staff.name}></CardImg>
-                        <CardBody>
-                            <CardTitle>Họ và tên: {staff.name}</CardTitle>
-                            <CardText>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardText>
-                            <CardText>Phòng ban: {staff.department.name}</CardText>
-                            <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
-                            <CardText>Số ngày đã làm thêm: {staff.overTime}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
-            );
-        } else {
-            return <div></div>
-        }
-    }
-
     render() {
-        const stafflist = this.props.mystaff.map((staff) => {
+        const stafflist = this.props.staffs.map((staff) => {
             return (
                 <div className={this.state.columnDefault}>
                     <Card className="text-center" key={staff.id} onClick={() => this.onStaffList(staff)}>
@@ -70,14 +48,35 @@ class StaffList extends Component {
                 </div>
 
                 <div className="row">{stafflist}</div>
-                <p>Bấm vào tên nhân sự để xem thông tin</p>
-
-                <div className="col-12 col-md-5 m-1">
+               
+                {/* <div className="col-12 col-md-5 m-1">
                     {this.renderDetail(this.state.staffList)}
-                </div>
+                </div> */}
             </div>
         );
     }
 }
 
 export default StaffList;
+
+// function StaffLists(props) {
+
+//     const listStaff = props.staffs.map((staff) => {
+//         return (
+//             <div key={staff.id} >
+//                 <div className="col-12 col-md-12 m-1">
+//                     <img src={staff.image} alt={staff.name}></img>
+//                     <p>{staff.name}</p>
+//                 </div>
+//             </div>
+//         );
+//     });
+
+//     return (
+//         <div className="container">
+//              <div className="row">{listStaff}</div>
+
+//         </div>
+//     )
+// }
+// export default StaffLists;
