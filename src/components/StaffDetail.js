@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
     Breadcrumb, BreadcrumbItem,
-    Card, CardBody, CardImg, CardText, CardTitle
+     CardBody, CardImg, CardText, CardTitle
 } from "reactstrap";
 import dateFormat from 'dateformat';
 
@@ -31,6 +31,7 @@ function StaffDetail(props) {
         )
     }
 }
+
 function RenderDetail({ staff }) {
     if (staff != null) {
         return (

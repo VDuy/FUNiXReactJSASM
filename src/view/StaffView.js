@@ -4,13 +4,16 @@ import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Route, Switch } from 'react-router-dom';
-import StaffList from '../components/StaffListComponent';
+import StaffList from '../components/StaffList';
 import StaffDetail from '../components/StaffDetail';
+import Department from '../components/Department';
+import Salary from '../components/Salary';
 
 function StaffView() {
-    const [staff, setStaff] = useState({
+    const [staff] = useState({
         staffs: STAFFS,
-        department: DEPARTMENTS
+        department: DEPARTMENTS,
+
     });
 
     const StaffWithId = ({ match }) => {
@@ -21,12 +24,16 @@ function StaffView() {
     }
     return (
         <div>
-            <Header></Header>
+            <Header />
             <Switch>
-                <Route exact path="/staff" component={() => <StaffList staffs={staff.staffs}></StaffList>}></Route>
+                <Route
+                    exact path="/staff"
+                    component={() => <StaffList staffs={staff.staffs}></StaffList>}></Route>
                 <Route path="/staff/:staff_id" component={StaffWithId}></Route>
+                <Route path="/department/" component={() => <Department dept={staff.department} />}></Route>
+                <Route path="/salary/" component={() => <Salary salarys={staff.staffs}></Salary>}></Route>
             </Switch>
-            <Footer></Footer>
+            <Footer />
         </div>
     )
 }
