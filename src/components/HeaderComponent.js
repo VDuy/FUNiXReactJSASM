@@ -3,7 +3,7 @@ import {
     Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,
     Modal, ModalBody, ModalHeader, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import { Jumbotron, Button } from 'reactstrap';
+import {  Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
