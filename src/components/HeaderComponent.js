@@ -3,7 +3,7 @@ import {
     Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,
     Modal, ModalBody, ModalHeader, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import {  Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -49,19 +49,27 @@ class Header extends Component {
                             <Collapse isOpen={this.state.isNavOpen} navbar>
                                 <Nav navbar>
                                     <NavItem>
-                                        <NavLink className="nav-link" to='/home'>
+                                        <NavLink to='/home' className={isActive =>
+                                            "nav-link" + (!isActive ? " unselected" : "")
+                                        }>
                                             <span className="fa fa-home fa-lg"></span> Home</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink className="nav-link" to='/aboutus'>
+                                        <NavLink to='/aboutus' className={isActive =>
+                                            "nav-link" + (!isActive ? " unselected" : "")
+                                        }>
                                             <span className="fa fa-info fa-lg"></span> About Us</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink className="nav-link" to='/menu'>
+                                        <NavLink to='/menu' className={isActive =>
+                                            "nav-link" + (!isActive ? " unselected" : "")
+                                        }>
                                             <span className="fa fa-list fa-lg"></span> Menu</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink className="nav-link" to='/contactus'>
+                                        <NavLink to='/contactus' className={isActive =>
+                                            "nav-link" + (!isActive ? " unselected" : "")
+                                        }>
                                             <span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                                     </NavItem>
                                 </Nav>
@@ -112,7 +120,7 @@ class Header extends Component {
                             </Form>
                         </ModalBody>
                     </Modal>
-                    
+
                 </React.Fragment>
             </div>
 
