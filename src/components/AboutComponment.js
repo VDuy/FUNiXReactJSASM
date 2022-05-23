@@ -1,5 +1,8 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
+import {
+    Breadcrumb, BreadcrumbItem, Card, CardBody,
+    CardText, CardHeader, Media, CardImg, CardTitle
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function About(props) {
@@ -7,8 +10,16 @@ function About(props) {
     const leaders = props.leaders.map((leader) => {
         return (
             <div>
-                {/* <img width="100%" src={leader.image} alt="leaderimage"></img> */}
-                <p>Leader {leader.name}</p>
+                <div className="col-12 col-md-5 m-1">
+                    <Card>
+                        <CardImg width="100%" src={leader.image}></CardImg>
+                        <CardBody>
+                            <CardTitle >{leader.name}</CardTitle>
+                            <CardText>{leader.designation}</CardText>
+                            <CardText>{leader.description}</CardText>
+                        </CardBody>
+                    </Card>
+                </div>
 
             </div>
         );
