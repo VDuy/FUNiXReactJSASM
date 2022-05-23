@@ -1,28 +1,26 @@
 import React from 'react';
 import {
     Breadcrumb, BreadcrumbItem, Card, CardBody,
-    CardText, CardHeader, Media, CardImg, CardTitle
+    CardHeader, Media,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function About(props) {
-
     const leaders = props.leaders.map((leader) => {
         return (
-            <div>
-                <div className="col-12 col-md-5 m-1">
-                    <Card>
-                        <CardImg width="100%" src={leader.image}></CardImg>
-                        <CardBody>
-                            <CardTitle >{leader.name}</CardTitle>
-                            <CardText>{leader.designation}</CardText>
-                            <CardText>{leader.description}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
-
+            <div key={leader.id} className="col-12 mt-5">
+                <Media tag="ol">
+                    <Media left middle>
+                        <Media object src={leader.image} alt={leader.name} />
+                    </Media>
+                    <Media body className="ml-5">
+                        <Media heading>{leader.name}</Media>
+                        <p>{leader.designation}</p>
+                        <p>{leader.description}</p>
+                    </Media>
+                </Media>
             </div>
-        );
+        )
     });
 
     return (

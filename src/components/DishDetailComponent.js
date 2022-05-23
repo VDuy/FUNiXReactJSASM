@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 function RenderDish({ dish }) {
     return (
         <div className="col-12 col-md-5 m-1">
+               <CardImg width="100%" src={dish.image}></CardImg>
             <Card>
-                <CardImg width="100%" src={dish.image}></CardImg>
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
                     <CardText>{dish.description}</CardText>
@@ -42,7 +42,6 @@ function RenderComment({ comments }) {
         return <div></div>
     }
 }
-
 const DishDetail = (props) => {
     if (props.dish != null) {
         return (
