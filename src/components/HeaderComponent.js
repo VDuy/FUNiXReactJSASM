@@ -14,8 +14,8 @@ class Header extends Component {
             isModalOpen: false,
         };
         this.toggleNav = this.toggleNav.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
+        // this.toggleModal = this.toggleModal.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav() {
@@ -38,27 +38,23 @@ class Header extends Component {
                             <Collapse isOpen={this.state.isNavOpen} navbar>
                                 <Nav navbar>
                                     <NavItem>
-                                        <NavLink to='/home' className={isActive =>
-                                            "nav-link" + (!isActive ? " unselected" : "")
-                                        }>
+                                        <NavLink to='/home' className=
+                                            "nav-link" >
                                             <span className="fa fa-home fa-lg"></span> Home</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink to='/aboutus' className={isActive =>
-                                            "nav-link" + (!isActive ? " unselected" : "")
-                                        }>
+                                        <NavLink to='/aboutus' className=
+                                            "nav-link">
                                             <span className="fa fa-info fa-lg"></span> About Us</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink to='/menu' className={isActive =>
-                                            "nav-link" + (!isActive ? " unselected" : "")
-                                        }>
+                                        <NavLink to='/menu' className=
+                                            "nav-link" >
                                             <span className="fa fa-list fa-lg"></span> Menu</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink to='/contactus' className={isActive =>
-                                            "nav-link" + (!isActive ? " unselected" : "")
-                                        }>
+                                        <NavLink to='/contactus' className=
+                                            "nav-link" >
                                             <span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                                     </NavItem>
                                 </Nav>
