@@ -3,10 +3,10 @@ import Menu from './MenuComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import DishDetail from "../components/DishDetailComponent";
-import AboutCom from "./AboutComponment";
+import About from "./AboutComponment";
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -46,19 +46,27 @@ class Main extends Component {
       <div>
         <Header />
         <div>
-          <Switch>
-            <Route path='/home' component={HomePage} />
-            <Route exact path='/aboutus' component={() => <AboutCom leaders={this.props.leaders} />} />
-            <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
-            <Route path='/menu/:dishId' component={DishWithId} />
-            <Route exact path='/contactus' component={Contact} />
-            <Redirect to="/home" />
-          </Switch>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<HomePage />} />
+            <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
+            <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
+            <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
+            <Route path="menu/:dishId" element={<DishWithId />} />
+            <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+          </Routes>
         </div>
         <Footer />
       </div>
     );
   }
 }
+export const withRouter = (Component) => {
+  const Wrapper = (props) => {
+    const history = useNavigate();
+    return <Component history={history} {...props} />;
+  };
+  return Wrapper;
+};
 
 export default withRouter(connect(mapStateToProps)(Main));
