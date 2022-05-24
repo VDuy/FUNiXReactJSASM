@@ -38,8 +38,8 @@ class Main extends Component {
     const DishWithId = () => {
       let params = useParams();
       return (
-        <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(params.dishId, 10))[0]}
-          comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(params.dishId, 10))} />
+        <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(params.dishId, 10))[0]}
+          comments={this.props.comments.filter((comment) => comment.dishId === parseInt(params.dishId, 10))} />
       );
     };
 
