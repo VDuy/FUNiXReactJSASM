@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import {
     Breadcrumb, BreadcrumbItem,
-     Row, Col, Label
+    Row, Col, Label
 } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -17,73 +18,16 @@ class Contact extends Component {
     constructor(props) {
         super(props);
 
-        // this.state = {
-        //     firstname: '',
-        //     lastname: '',
-        //     phone: '',
-        //     email: '',
-        //     agree: false,
-        //     contactType: 'Tel.',
-        //     message: '',
-        //     touched: {
-        //         firstname: false,
-        //         lastname: false,
-        //         phone: false,
-        //         email: false,
-        //     }
-        // }
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleInputChange = this.handleInputChange.bind(this);
-        // this.handleBlur = this.handleBlur.bind(this);
+
     }
 
-    // handleInputChange(event) {
-    //     const target = event.target;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     const name = target.name;
 
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // }
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
         // event.preventDefault();
     }
-    // validate
-    // handleBlur = (field) => (evt) => {
-    //     this.setState({
-    //         touched: { ...this.state.touched, [field]: true }
-    //     });
-    // }
-    // validate(firstname, lastname, phone, email) {
-    //     const errors = {
-    //         firstname: '',
-    //         lastname: '',
-    //         phone: '',
-    //         email: '',
-    //     };
-    //     if (this.state.touched.firstname && firstname.length < 3)
-    //         errors.firstname = "First Name should be greater than 3 charaters";
-    //     else if (this.state.touched.firstname && firstname.length > 10)
-    //         errors.firstname = "First Name should be less than 10 charaters";
-    //     if (this.state.touched.lastname && lastname.length < 3)
-    //         errors.lastname = "First Name should be greater than 3 charaters";
-    //     else if (this.state.touched.lastname && lastname.length > 10)
-    //         errors.lastname = "First Name should be less than 10 charaters";
-
-
-    //     const newLocal = /^\d+$;/;
-    //     const reg = newLocal;
-    //     if (this.state.touched.phone && !reg.test(phone)) {
-    //         errors.phone = "Tel. Number should contain only number"
-    //     }
-    //     if (this.state.touched.email && email.split('').filter(x => x === '@').length !== 1) {
-    //         errors.email = "Email should contain a @"
-    //     }
-    //     return errors;
-    // };
 
 
     render() {
