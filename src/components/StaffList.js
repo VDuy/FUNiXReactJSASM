@@ -35,7 +35,7 @@ class StaffList extends Component {
 
         return (
             <div className="container">
-                <div className="col m-3">
+                {/* <div className="col m-3">
                     <button onClick={() => this.onColumnSelect("col-md-2 mt-1")}
                         className="btn btn-success mr-3">6 Cột</button>
                     <button onClick={() => this.onColumnSelect("col-md-3 mt-1")}
@@ -46,7 +46,7 @@ class StaffList extends Component {
                         className="btn btn-success mr-3">2 Cột</button>
                     <button onClick={() => this.onColumnSelect("col-md-12 mt-1")}
                         className="btn btn-success mr-3">1 Cột</button>
-                </div>
+                </div> */}
 
                 <div className="row">{stafflist}</div>
 
