@@ -23,11 +23,8 @@ class Header extends Component {
             <div>
                 <Navbar dark expand color="primary">
                     <div className="container">
-                        <NavbarToggler
-                            onClick={this.toggleNav}
-                        >
-                        </NavbarToggler>
-                        <NavbarBrand className="mr-auto" href="/" >
+                        <NavbarToggler onClick={this.toggleNav} />
+                        <NavbarBrand className="mr-auto" href="/staff" >
                             <img src='assets/images/logo.png'
                                 height="30" width="41" alt='Quan ly nhan vien' />
                         </NavbarBrand>
@@ -35,7 +32,7 @@ class Header extends Component {
                             <Nav navbar>
                                 <NavItem >
                                     <NavLink
-                                        to="/staff"  className="nav-link ">
+                                        to="/staff" className="nav-link ">
                                         <span className="fa fa-home fa-lg"></span> Nhân viên</NavLink>
                                 </NavItem>
                                 <NavItem>
