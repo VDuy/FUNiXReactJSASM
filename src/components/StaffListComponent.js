@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from 'react-bootstrap/Button';
+import {Button} from 'react-bootstrap';
 
 import DetailStaffComponent from "./DetailStaffComponent";
 import '../App.css';
