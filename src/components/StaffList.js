@@ -50,9 +50,7 @@ class StaffList extends Component {
 
                 <div className="row">{stafflist}</div>
 
-                {/* <div className="col-12 col-md-5 m-1">
-                    {this.renderDetail(this.state.staffList)}
-                </div> */}
+             
             </div>
         );
     }
