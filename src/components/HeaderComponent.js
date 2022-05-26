@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
     Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,
-  
+
 } from 'reactstrap';
 import { Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
@@ -11,11 +11,11 @@ class Header extends Component {
         super(props);
         this.state = {
             isNavOpen: false,
-            isModalOpen: false,
+            // isModalOpen: false,
         };
         this.toggleNav = this.toggleNav.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
+        // this.toggleModal = this.toggleModal.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav() {
@@ -23,7 +23,7 @@ class Header extends Component {
             isNavOpen: !this.state.isNavOpen
         });
     }
- 
+
     render() {
         return (
             <div>
@@ -64,14 +64,16 @@ class Header extends Component {
                                 </Nav>
                                 <Nav className="ml-auto" navbar>
                                     <NavItem>
-                                        <Button ouline onClick={this.toggleModal}>
+                                        <Button outline
+                                        //  onClick={this.toggleModal}
+                                         >
                                             <span className="fa fa-sign-in fa-lg"></span>Login</Button>
                                     </NavItem>
                                 </Nav>
                             </Collapse>
                         </div>
                     </Navbar>
-                    {/* <Jumbotron>
+                    <div className="Jumbotron">
                         <div className="container">
                             <div className="row row-header">
                                 <div className="col-12 col-sm-6">
@@ -80,7 +82,7 @@ class Header extends Component {
                                 </div>
                             </div>
                         </div>
-                    </Jumbotron> */}
+                    </div>
 
                 </React.Fragment>
             </div>
