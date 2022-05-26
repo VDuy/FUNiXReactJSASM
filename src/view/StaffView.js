@@ -3,7 +3,7 @@ import { STAFFS, DEPARTMENTS } from '../shared/staffs';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes, Switch } from 'react-router-dom';
 import StaffList from '../components/StaffList';
 import StaffDetail from '../components/StaffDetail';
 import Department from '../components/Department';
@@ -25,14 +25,15 @@ function StaffView() {
     return (
         <div>
             <Header />
-            <Switch>
+            <Routes>
                 <Route
                     exact path="/staff"
                     component={() => <StaffList staffs={staff.staffs}></StaffList>}></Route>
                 <Route path="/staff/:staff_id" component={StaffWithId}></Route>
                 <Route path="/department/" component={() => <Department dept={staff.department} />}></Route>
                 <Route path="/salary/" component={() => <Salary salarys={staff.staffs}></Salary>}></Route>
-            </Switch>
+            </Routes>
+
             <Footer />
         </div>
     )
