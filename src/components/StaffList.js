@@ -16,6 +16,7 @@ class StaffList extends Component {
     onColumnSelect(col) {
         this.setState({ columnDefault: col });
     }
+    
     render() {
         const stafflist = this.props.staffs.map((staff) => {
             return (
