@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-
 import { Card, CardImg, CardTitle } from "reactstrap";
 import '../App.css';
 class StaffList extends Component {
@@ -13,7 +11,6 @@ class StaffList extends Component {
     }
     onStaffList(staff) {
         this.setState({ staffList: staff });
-
     }
 
     onColumnSelect(col) {
@@ -50,12 +47,29 @@ class StaffList extends Component {
 
                 <div className="row">{stafflist}</div>
 
-                {/* <div className="col-12 col-md-5 m-1">
-                    {this.renderDetail(this.state.staffList)}
-                </div> */}
+
             </div>
         );
     }
 }
 
 export default StaffList;
+
+
+// function StaffList(props) {
+//     const listStaff = props.staffs.map((staff) => {
+//         return (
+//             <div key={staff.id}>
+//                 <div className="col-6 col-md-4 col-lg-2 mt-1" onClick={}>
+//                     <img src={staff.image} alt={staff.name} />
+//                     <p>  {staff.name}</p>
+//                 </div>
+//             </div>
+//         );
+//     });
+//     return (
+//         <div className="container">
+//             <div className="row">{listStaff}</div>
+//         </div>
+//     )
+// }

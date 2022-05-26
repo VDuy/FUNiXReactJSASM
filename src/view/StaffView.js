@@ -25,14 +25,12 @@ function StaffView() {
     return (
         <div>
             <Header />
-            <Switch>
-                <Route
-                    exact path="/staff"
-                    component={() => <StaffList staffs={staff.staffs}></StaffList>}></Route>
-                <Route path="/staff/:staff_id" component={StaffWithId}></Route>
-                <Route path="/department/" component={() => <Department dept={staff.department} />}></Route>
-                <Route path="/salary/" component={() => <Salary salarys={staff.staffs}></Salary>}></Route>
-            </Switch>
+            <Route
+                exact path="/staff"
+                component={() => <StaffList staffs={staff.staffs}></StaffList>}></Route>
+            <Route path="/staff/:staff_id" component={StaffWithId}></Route>
+            <Route path="/department/" component={() => <Department dept={staff.department} />}></Route>
+            <Route path="/salary/" component={() => <Salary salarys={staff.staffs}></Salary>}></Route>
             <Footer />
         </div>
     )
