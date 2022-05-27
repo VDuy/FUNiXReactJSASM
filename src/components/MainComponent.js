@@ -11,7 +11,7 @@ import Footer from './FooterComponent';
 import About from './AboutComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 class Main extends Component {
 
@@ -47,15 +47,16 @@ class Main extends Component {
     return (
       <div>
         <Header></Header>
-        <Switch>
-          <Route path="/home" component={Homepage}></Route>
-          <Route exact path="/aboutus" component={() => <About leaders={this.state.leaders} />} ></Route>
-          <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} ></Route>
-          <Route exact path="/contactus" component={Contact} />
-          <Route path='/menu/:dishId' component={DishWithId} />
-          <Redirect to="/home"></Redirect>
-        </Switch>
-        <Footer/>
+        <div>
+        <Routes>
+          <Route path="/home" element={Homepage}></Route>
+          <Route exact path="/aboutus" element={<About leaders={this.state.leaders} />} ></Route>
+          <Route exact path="/menu" element={<Menu dishes={this.state.dishes} />} ></Route>
+          <Route exact path="/contactus" element={Contact} />
+          <Route path='/menu/:dishId' element={DishWithId} />
+        </Routes>
+        </div>
+        <Footer />
       </div >
     )
   }
