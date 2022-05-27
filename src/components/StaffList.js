@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-
 import { Card, CardImg, CardTitle } from "reactstrap";
 import '../App.css';
 class StaffList extends Component {
@@ -18,6 +16,7 @@ class StaffList extends Component {
     onColumnSelect(col) {
         this.setState({ columnDefault: col });
     }
+    
     render() {
         const stafflist = this.props.staffs.map((staff) => {
             return (
@@ -48,10 +47,8 @@ class StaffList extends Component {
                 </div>
 
                 <div className="row">{stafflist}</div>
-               
-                {/* <div className="col-12 col-md-5 m-1">
-                    {this.renderDetail(this.state.staffList)}
-                </div> */}
+
+
             </div>
         );
     }
@@ -59,24 +56,21 @@ class StaffList extends Component {
 
 export default StaffList;
 
-// function StaffLists(props) {
 
+// function StaffList(props) {
 //     const listStaff = props.staffs.map((staff) => {
 //         return (
-//             <div key={staff.id} >
-//                 <div className="col-12 col-md-12 m-1">
-//                     <img src={staff.image} alt={staff.name}></img>
-//                     <p>{staff.name}</p>
+//             <div key={staff.id}>
+//                 <div className="col-6 col-md-4 col-lg-2 mt-1" onClick={}>
+//                     <img src={staff.image} alt={staff.name} />
+//                     <p>  {staff.name}</p>
 //                 </div>
 //             </div>
 //         );
 //     });
-
 //     return (
 //         <div className="container">
-//              <div className="row">{listStaff}</div>
-
+//             <div className="row">{listStaff}</div>
 //         </div>
 //     )
 // }
-// export default StaffLists;

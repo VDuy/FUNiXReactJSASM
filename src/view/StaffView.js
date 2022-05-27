@@ -30,7 +30,11 @@ class StaffView extends Component {
                 <Header />
                 <div>
                     <Routes>
+<<<<<<< HEAD
                         <Route index path="/staff"
+=======
+                        <Route path="/staff"
+>>>>>>> 6305006bfaa394c9a82b21a069c4d2e8a26025f9
                             element={<StaffList staffs={this.state.staffs}></StaffList>}></Route>
                         <Route path="/staff/:staff_id" element={StaffWithId}></Route>
                         <Route path="/department/" element={<Department dept={this.state.department} />}></Route>
