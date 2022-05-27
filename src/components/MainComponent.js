@@ -9,7 +9,7 @@ import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 class Main extends Component {
   constructor(props) {
@@ -47,13 +47,16 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
-          <Route path="/menu/:dishId" component={DishWithId} />
-          <Route exact path="/contactus" component={Contact} />
-          <Redirect to="/home" />
-        </Switch>
+        <div>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<HomePage />} />
+            {/* <Route path="aboutus" element={<About leaders={this.props.leaders} />} /> */}
+            <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
+            <Route path="menu/:dishId" element={<DishWithId />} />
+            <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     );
