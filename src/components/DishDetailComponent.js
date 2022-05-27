@@ -2,14 +2,14 @@
 import React, { Component } from "react";
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem
+    CardTitle, Breadcrumb, BreadcrumbItem, Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import CommentForm from "./CommentForm";
 function RenderDish({ dish }) {
     return (
         <div className="col-12 col-md-5 m-1">
-               <CardImg width="100%" src={dish.image}></CardImg>
+            <CardImg width="100%" src={dish.image}></CardImg>
             <Card>
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
@@ -36,6 +36,10 @@ function RenderComment({ comments }) {
                             </li>)
                     })}
                 </ul>
+                <Button outline
+                // onClick={this.toggleModal}
+                >
+                    <span className="fa fa-pencil"></span> Submit Comment</Button>
             </div>
 
         );
