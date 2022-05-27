@@ -23,9 +23,20 @@ class CommentForm extends Component {
     render() {
         return (
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                <ModalHeader>Login</ModalHeader>
+                <ModalHeader>Submit Comment</ModalHeader>
                 <ModalBody>
                     <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
+                        <Row className="form-group">
+                            <Label htmlFor='rate'>Rate:</Label>
+                            <Control.select model=".rate">
+                                <option></option>
+                                <option >1</option>
+                                <option >2</option>
+                                <option >3</option>
+                                <option >4</option>
+                                <option >5</option>
+                            </Control.select>
+                        </Row>
                         <Row className="form-group">
                             <Label htmlFor="firstname" md={2}>First Name</Label>
                             <Col md={10}>
@@ -49,6 +60,21 @@ class CommentForm extends Component {
                                         maxLength: 'Must be 15 characters or less'
                                     }}
                                 />
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Label htmlFor="message" md={2}>Your Feedback</Label>
+                            <Col md={10}>
+                                <Control.textarea model=".message" id="message" name="message"
+                                    rows="12"
+                                    className="form-control" />
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Col md={{ size: 10, offset: 2 }}>
+                                <Button type="submit" color="primary">
+                                    Send Feedback
+                                </Button>
                             </Col>
                         </Row>
                     </LocalForm>
