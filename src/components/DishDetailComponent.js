@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem, Button
+    CardTitle, Breadcrumb, BreadcrumbItem
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import CommentForm from "./CommentForm";
@@ -36,10 +36,7 @@ function RenderComment({ comments }) {
                             </li>)
                     })}
                 </ul>
-                <Button outline
-                // onClick={this.toggleModal}
-                >
-                    <span className="fa fa-pencil"></span> Submit Comment</Button>
+                <CommentForm></CommentForm>
             </div>
 
         );
@@ -67,7 +64,7 @@ const DishDetail = (props) => {
                 <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderComment comments={props.comments} />
-                    <CommentForm />
+              
                 </div>
             </div>
         );

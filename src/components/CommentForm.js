@@ -16,6 +16,7 @@ class CommentForm extends Component {
             isModalOpen: false,
             isNavOpen: false
         }
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     toggleNav() {
@@ -30,27 +31,30 @@ class CommentForm extends Component {
     }
     handleSubmit(value) {
         this.toggleModal();
-     
         console.log(JSON.stringify(value));
     }
     render() {
         return (
             <div>
-                <Button outline onClick={this.toggleModal}><span className='fa fa-pencils'>Submit Comment</span></Button>
+                <Button outline onClick={this.toggleModal}> <span className="fa fa-pencil"></span> Submit Comment</Button>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader>Submit Comment</ModalHeader>
                     <ModalBody>
                         <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
                             <Row className="form-group">
-                                <Label htmlFor='rate'>Rate:</Label>
-                                <Control.select model=".rate">
-                                    <option></option>
-                                    <option >1</option>
-                                    <option >2</option>
-                                    <option >3</option>
-                                    <option >4</option>
-                                    <option >5</option>
-                                </Control.select>
+                                <Label htmlFor='rate' md={2}>Rate:</Label>
+                                <Col md={10}>
+                                    <Control.select model=".rate"
+                                        id="rate"
+                                        className="form-control">
+                                        <option></option>
+                                        <option >1</option>
+                                        <option >2</option>
+                                        <option >3</option>
+                                        <option >4</option>
+                                        <option >5</option>
+                                    </Control.select>
+                                </Col>
                             </Row>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
