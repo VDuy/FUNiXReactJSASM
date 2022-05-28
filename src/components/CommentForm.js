@@ -13,73 +13,89 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            isNavOpen: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    toggleNav() {
+        this.setState({
+            isNavOpen: !this.state.isNavOpen
+        });
+    }
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
     handleSubmit(value) {
+        this.toggleModal();
+        this.props.addComment(this.props.dishId, value.rating, value.author, value.comment)
         console.log(JSON.stringify(value));
     }
     render() {
         return (
-            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                <ModalHeader>Submit Comment</ModalHeader>
-                <ModalBody>
-                    <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
-                        <Row className="form-group">
-                            <Label htmlFor='rate'>Rate:</Label>
-                            <Control.select model=".rate">
-                                <option></option>
-                                <option >1</option>
-                                <option >2</option>
-                                <option >3</option>
-                                <option >4</option>
-                                <option >5</option>
-                            </Control.select>
-                        </Row>
-                        <Row className="form-group">
-                            <Label htmlFor="firstname" md={2}>First Name</Label>
-                            <Col md={10}>
-                                <Control.text
-                                    model=".firstname"
-                                    id="firstname"
-                                    name="firstname"
-                                    placeholder="First Name"
-                                    className="form-control"
-                                    validators={{
-                                        required, minLength: minLength(3), maxLength: maxLength(15)
-                                    }}
-                                />
-                                <Errors
-                                    className="text-danger"
-                                    model=".firstname"
-                                    show="touched"
-                                    messages={{
-                                        required: 'Required',
-                                        minLength: 'Must be greater than 2 characters',
-                                        maxLength: 'Must be 15 characters or less'
-                                    }}
-                                />
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <Label htmlFor="message" md={2}>Your Feedback</Label>
-                            <Col md={10}>
-                                <Control.textarea model=".message" id="message" name="message"
-                                    rows="12"
-                                    className="form-control" />
-                            </Col>
-                        </Row>
-                        <Row className="form-group">
-                            <Col md={{ size: 10, offset: 2 }}>
-                                <Button type="submit" color="primary">
-                                    Send Feedback
-                                </Button>
-                            </Col>
-                        </Row>
-                    </LocalForm>
-                </ModalBody>
-            </Modal>
+            <div>
+                <Button outline onClick={this.toggleModal}><span className='fa fa-pencils'>Submit Comment</span></Button>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader>Submit Comment</ModalHeader>
+                    <ModalBody>
+                        <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
+                            <Row className="form-group">
+                                <Label htmlFor='rate'>Rate:</Label>
+                                <Control.select model=".rate">
+                                    <option></option>
+                                    <option >1</option>
+                                    <option >2</option>
+                                    <option >3</option>
+                                    <option >4</option>
+                                    <option >5</option>
+                                </Control.select>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="firstname" md={2}>First Name</Label>
+                                <Col md={10}>
+                                    <Control.text
+                                        model=".firstname"
+                                        id="firstname"
+                                        name="firstname"
+                                        placeholder="First Name"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(3), maxLength: maxLength(15)
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".firstname"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be greater than 2 characters',
+                                            maxLength: 'Must be 15 characters or less'
+                                        }}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="message" md={2}>Your Feedback</Label>
+                                <Col md={10}>
+                                    <Control.textarea model=".message" id="message" name="message"
+                                        rows="12"
+                                        className="form-control" />
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Col md={{ size: 10, offset: 2 }}>
+                                    <Button type="submit" color="primary">
+                                        Submit
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </LocalForm>
+                    </ModalBody>
+                </Modal>
+            </div>
         )
     }
 }

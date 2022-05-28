@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem, Button
+    CardTitle, Breadcrumb, BreadcrumbItem
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import CommentForm from "./CommentForm";
@@ -19,7 +19,7 @@ function RenderDish({ dish }) {
         </div>
     );
 }
-function RenderComment({ comments }) {
+function RenderComment({ comments, addComment, dishId }) {
     if (comments != null) {
         return (
             <div className="col-12 col-md-5 m-1">
@@ -36,10 +36,7 @@ function RenderComment({ comments }) {
                             </li>)
                     })}
                 </ul>
-                <Button outline
-                // onClick={this.toggleModal}
-                >
-                    <span className="fa fa-pencil"></span> Submit Comment</Button>
+                <CommentForm dishId={dishId} addComment={addComment} />
             </div>
 
         );
@@ -66,8 +63,11 @@ const DishDetail = (props) => {
                 </div>
                 <div className="row">
                     <RenderDish dish={props.dish} />
-                    <RenderComment comments={props.comments} />
-                    <CommentForm />
+                    <RenderComment comments={props.comments}
+                        addComment={props.addComment}
+                        dishId={props.dish.id} />
+
+
                 </div>
             </div>
         );
