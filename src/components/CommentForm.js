@@ -42,10 +42,10 @@ class CommentForm extends Component {
                     <ModalBody>
                         <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
                             <Row className="form-group">
-                                <Label htmlFor='rate' md={2}>Rate:</Label>
+                                <Label htmlFor='rating' md={2}>Rate: </Label>
                                 <Col md={10}>
-                                    <Control.select model=".rate"
-                                        id="rate"
+                                    <Control.select model=".rating"
+                                        id="rating"
                                         className="form-control">
                                         <option></option>
                                         <option >1</option>
@@ -57,13 +57,13 @@ class CommentForm extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="firstname" md={2}>First Name</Label>
+                                <Label htmlFor="author" md={2}>Your Name</Label>
                                 <Col md={10}>
                                     <Control.text
-                                        model=".firstname"
-                                        id="firstname"
-                                        name="firstname"
-                                        placeholder="First Name"
+                                        model=".author"
+                                        id="author"
+                                        name="author"
+                                        placeholder="Your Name"
                                         className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
@@ -71,7 +71,7 @@ class CommentForm extends Component {
                                     />
                                     <Errors
                                         className="text-danger"
-                                        model=".firstname"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -82,9 +82,9 @@ class CommentForm extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="message" md={2}>Your Feedback</Label>
+                                <Label htmlFor="comment" md={2}>Your Feedback</Label>
                                 <Col md={10}>
-                                    <Control.textarea model=".message" id="message" name="message"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="12"
                                         className="form-control" />
                                 </Col>
