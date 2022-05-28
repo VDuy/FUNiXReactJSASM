@@ -19,11 +19,10 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  addComment: (dishId, rating, author,
-    comment) => dispatch(addComment(dishId, rating, author, comment))
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
 });
 
-class Main extends Component {
+class MainComponent extends Component {
   // constructor(props) {
   //   super(props);
 
@@ -44,7 +43,7 @@ class Main extends Component {
       return (
         <DishDetail
           dish={this.props.dishes.filter((dish) => dish.id === parseInt(params.dishId, 10))[0]}
-          comments={this.props.comments.filter((comment) => comment.dishId === parseInt(params.dishId, 10))}
+          comments={this.props.comments.filter((comments) => comments.dishId === parseInt(params.dishId, 10))}
           addComment={this.props.addComment}
         />
       );
@@ -77,4 +76,4 @@ export const withRouter = (Component) => {
   return Wrapper;
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainComponent));
