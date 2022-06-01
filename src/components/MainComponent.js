@@ -8,8 +8,8 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment } from '../redux/ActionCreator';
-
+import { addComment, fetchDishes } from '../redux/ActionCreator';
+import { Loading } from './LoadingComponent';
 const mapStateToProps = state => {
   return {
     dishes: state.dishes,
@@ -19,7 +19,9 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+  fetchDishes: () => { dispatch(fetchDishes()) }
+
 });
 
 class MainComponent extends Component {
@@ -27,11 +29,18 @@ class MainComponent extends Component {
   //   super(props);
 
   // }
+
+  componentDidMount() {
+    this.props.fetchDishes();
+  }
+
   render() {
     const HomePage = () => {
       return (
         <Home
-          dish={this.props.dishes.filter((dish) => dish.featured)[0]}
+          dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
+          dishesLoading={this.props.dishes.isLoading}
+          dishesErrMess={this.props.dishes.errMess}
           promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
           leader={this.props.leaders.filter((leader) => leader.featured)[0]}
         />
@@ -42,7 +51,9 @@ class MainComponent extends Component {
       let params = useParams();
       return (
         <DishDetail
-          dish={this.props.dishes.filter((dish) => dish.id === parseInt(params.dishId, 10))[0]}
+          dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(params.dishId, 10))[0]}
+          isLoading={this.props.dishes.isLoading}
+          errMess={this.props.dishes.errMess}
           comments={this.props.comments.filter((comments) => comments.dishId === parseInt(params.dishId, 10))}
           addComment={this.props.addComment}
         />
