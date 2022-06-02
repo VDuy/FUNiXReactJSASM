@@ -11,10 +11,11 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 // import CommentForm from "./CommentForm";
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 function RenderDish({ dish }) {
     return (
         <div className="col-12 col-md-5 m-1">
-            <CardImg width="100%" src={dish.image}></CardImg>
+            <CardImg top src={baseUrl + dish.image} alt={dish.name} />
             <Card>
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
@@ -53,8 +54,8 @@ function RenderComment({ comments, addComment, dishId }) {
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
-const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+// const isNumber = (val) => !isNaN(Number(val));
+// const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class CommentForm extends Component {
     constructor(props) {
