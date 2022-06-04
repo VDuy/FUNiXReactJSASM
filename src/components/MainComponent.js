@@ -10,6 +10,7 @@ import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreator';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = state => {
   return {
@@ -30,10 +31,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class MainComponent extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  // }
+  }
 
   componentDidMount() {
     this.props.fetchDishes();
@@ -75,15 +76,20 @@ class MainComponent extends Component {
       <div>
         <Header />
         <div>
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
-            <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
-            <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
-            <Route path="menu/:dishId" element={<DishWithId />} />
-            <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-          </Routes>
+          <TransitionGroup>
+            <CSSTransition
+              // key={this.props.location.key}
+              classNames="page" timeout={300}>
+              <Routes location={this.props.location}>
+                <Route index element={<HomePage />} />
+                <Route path="home" element={<HomePage />} />
+                <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
+                <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
+                <Route path="menu/:dishId" element={<DishWithId />} />
+                <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+              </Routes>
+            </CSSTransition>
+          </TransitionGroup>
         </div>
         <Footer />
       </div>
