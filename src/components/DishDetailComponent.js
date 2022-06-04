@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-pascal-case */
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
 import {
@@ -8,37 +10,51 @@ import {
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 // import CommentForm from "./CommentForm";
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
 function RenderDish({ dish }) {
     return (
         <div className="col-12 col-md-5 m-1">
-            <CardImg width="100%" src={dish.image}></CardImg>
-            <Card>
-                <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
-                    <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
+            <FadeTransform in
+                transformProps={{
+                    exitTranform: 'scale(0.5) translateY)-50%)'
+                }}>
+                <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+                <Card>
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
         </div>
     );
 }
-function RenderComment({ comments, addComment, dishId }) {
+function RenderComment({ comments, postComment, dishId }) {
     if (comments != null) {
         return (
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
                 <ul className="list-unstyled">
-                    {comments.map((comment) => {
-                        return (
-                            <li key={comment.id}>
-                                <p>{comment.comment}</p>
-                                <p>
-                                    -- {comment.author},
-                                    {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
-                                </p>
-                            </li>)
-                    })}
+                    <Stagger in>
+                        {comments.map((comment) => {
+                            return (
+                                <Fade in>
+                                    <li key={comment.id}>
+                                        <p>{comment.comment}</p>
+                                        <p>
+                                            -- {comment.author},
+                                            {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
+                                        </p>
+                                    </li>
+                                </Fade>
+                            )
+                        })}
+                    </Stagger>
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
 
         );
@@ -50,8 +66,8 @@ function RenderComment({ comments, addComment, dishId }) {
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
-const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+// const isNumber = (val) => !isNaN(Number(val));
+// const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class CommentForm extends Component {
     constructor(props) {
@@ -75,6 +91,7 @@ class CommentForm extends Component {
     }
     handleSubmit(values) {
         this.toggleModal();
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
     render() {
         return (
@@ -117,7 +134,7 @@ class CommentForm extends Component {
                                         model=".author"
                                         show="touched"
                                         messages={{
-                                            required: 'Required: ',
+                                            required: 'Required',
                                             minLength: 'Must be greater than 2 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
@@ -148,32 +165,51 @@ class CommentForm extends Component {
 }
 
 const DishDetail = (props) => {
-    if (props.dish != null) {
+    if (props.isLoading) {
         return (
             <div className="container">
                 <div className="row">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>Menu</h3>
-                        <hr />
-                    </div>
-                </div>
-                <div className="row">
-                    <RenderDish dish={props.dish} />
-                    <RenderComment comments={props.comments}
-                        addComment={props.addComment}
-                        dishId={props.dish.id} />
-
-
+                    <Loading />
                 </div>
             </div>
         );
-    } else {
-        return <div></div>;
     }
+    else if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else if (props.dish != null)
+        if (props.dish != null) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                        <div className="col-12">
+                            <h3>Menu</h3>
+                            <hr />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <RenderDish dish={props.dish} />
+                        <RenderComment comments={props.comments}
+                            addComment={props.addComment}
+                            dishId={props.dish.id} />
+
+
+                    </div>
+                </div>
+            );
+        } else {
+            return <div></div>;
+        }
 }
 
 
