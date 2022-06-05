@@ -9,6 +9,7 @@ import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import About from './AboutComponment';
 import { Routes, Route } from 'react-router-dom';
 
 class Main extends Component {
@@ -26,12 +27,12 @@ class Main extends Component {
 
   render() {
     const HomePage = () => {
-      return(
-          <Home 
-              dish={this.state.dishes.filter((dish) => dish.featured)[0]}
-              promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
-              leader={this.state.leaders.filter((leader) => leader.featured)[0]}
-          />
+      return (
+        <Home
+          dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+          promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
+          leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+        />
       );
     }
 
@@ -51,13 +52,14 @@ class Main extends Component {
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="home" element={<HomePage />} />
-            {/* <Route path="aboutus" element={<About leaders={this.props.leaders} />} /> */}
-            <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
+            <Route path="aboutus" element={<About leaders={this.state.leaders} />} />
+            <Route path="menu" element={<Menu dishes={this.state.dishes} />} />
             <Route path="menu/:dishId" element={<DishWithId />} />
-            <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+            <Route path="contactus" element={<Contact resetFeedbackForm={this.state.resetFeedbackForm} />} />
           </Routes>
         </div>
         <Footer />
+
       </div>
     );
   }
