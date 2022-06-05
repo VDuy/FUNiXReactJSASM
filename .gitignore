@@ -129,3 +129,6 @@ build/static/media/fontawesome-webfont.912ec66d.svg
 build/static/media/fontawesome-webfont.af7ae505.woff2
 build/static/media/fontawesome-webfont.b06871f2.ttf
 build/static/media/fontawesome-webfont.fee66e71.woff
+
+# Local Netlify folder
+.netlify
