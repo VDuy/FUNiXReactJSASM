@@ -39,8 +39,8 @@ class Main extends Component {
     const DishWithId = ({ match }) => {
       return (
         <DishDetail
-          dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
-          comments={this.state.comments.filter((commemt) => commemt.id === parseInt(match.params.dishId, 10))[0]}
+          dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
+          comments={this.props.comments.filter((commemt) => commemt.id === parseInt(match.params.dishId, 10))[0]}
         />
       )
     }
@@ -52,10 +52,10 @@ class Main extends Component {
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="home" element={<HomePage />} />
-            <Route path="aboutus" element={<About leaders={this.state.leaders} />} />
-            <Route path="menu" element={<Menu dishes={this.state.dishes} />} />
+            <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
+            <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
             <Route path="menu/:dishId" element={<DishWithId />} />
-            <Route path="contactus" element={<Contact resetFeedbackForm={this.state.resetFeedbackForm} />} />
+            <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
           </Routes>
         </div>
         <Footer />
