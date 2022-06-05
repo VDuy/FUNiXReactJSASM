@@ -69,7 +69,6 @@ class MainComponent extends Component {
             <Route index element={<HomePage />} />
             <Route path="home" element={<HomePage />} />
             <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
-            <Route path="aboutus" element={<About leaders={this.props.leaders} />} />
             <Route path="menu" element={<Menu dishes={this.props.dishes} />} />
             <Route path="menu/:dishId" element={<DishWithId />} />
             <Route path="contactus" element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
